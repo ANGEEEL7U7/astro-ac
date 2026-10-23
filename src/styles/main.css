@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+:root {
+  /*tema claro*/
+  --bg-default-light: #fdf7ff;
+  --text-default-light: var(--color-neutral-800);
+
+  /*tema oscuro*/
+  --bg-default-dark: #141318;
+  --text-default-dark: #fff;
+
+  --bg: var(--bg-default-light);
+  --text: var(--text-default-light);
+}
+
+.light {
+  --bg: var(--bg-default-light);
+  --text: var(--text-default-light);
+}
+
+.dark {
+  --bg: var(--bg-default-dark);
+  --text: var(--text-default-dark)
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    --bg: var(--bg-default-dark);
+    --text: var(--text-default-dark)
+  }
+}
+
+::selection {
+  background: #cfc8e5;
+  color: black;
+}
+
+@custom-variant dark {
+
+  &.dark,
+  &.dark & {
+    @slot;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    &:not(.light *) {
+      @slot;
+    }
+  }
+}
+
+
+
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("/font/space_grotesk.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Space Mono";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/font/space_mono/SpaceMono-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Space Mono";
+  font-style: normal;
+  font-weight: 700;
+  src: url("/font/space_mono/SpaceMono-Bold.ttf") format("truetype");
+}
+
+@theme {
+  --font-space: "Space Grotesk", sans-serif;
+  --font-space-mono: "Space Mono", monospace;
+
+  --color-primary-50: #f4f3fa;
+  --color-primary-100: #e6e3f4;
+  --color-primary-200: #cec8ea;
+  --color-primary-300: #b6addf;
+  --color-primary-400: #a092d5;
+  --color-primary-500: #8a78c9;
+  --color-primary-600: #745dbc;
+  --color-primary-700: #5f46a7;
+  --color-primary-800: #4b3685;
+  --color-primary-900: #352661;
+  --color-primary-950: #2a1d4f;
+}
+
+@layer base {
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-space);
+  }
+}

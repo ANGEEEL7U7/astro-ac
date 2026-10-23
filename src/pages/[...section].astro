@@ -1,0 +1,15 @@
+---
+import BaseLayout from "@layouts/base-layout.astro";
+import type { GetStaticPaths } from "astro";
+
+export const getStaticPaths = (() => [
+  { params: { section: undefined }, props: { title: "" } },
+]) satisfies GetStaticPaths;
+
+const { title } = Astro.props;
+---
+
+<BaseLayout title={title}>
+  <h1 class="px-4 py-5 text-4xl font-bold">Astro</h1>
+  <p>esta es una pagina hecha en astro</p>
+</BaseLayout>
